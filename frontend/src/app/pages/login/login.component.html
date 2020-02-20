@@ -5,11 +5,11 @@
       <div class="login-content">
         <h2>Acceso</h2>
         <app-login-input label="Usuario">
-          <input appInputRef type="text"/>
+          <input appInputRef type="text" (change)="username=$event.target.value"/>
         </app-login-input>
         <span class="input-separator"></span>
         <app-login-input label="Contraseña">
-          <input appInputRef type="password"/>
+          <input appInputRef type="password" (change)="password=$event.target.value"/>
         </app-login-input>
       </div>
       <span class="action-separator"></span>

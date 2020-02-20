@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -6,8 +7,10 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  username: string;
+  password: string;
 
-  constructor() {
+  constructor(private auth: AuthService) {
   }
 
   ngOnInit(): void {
@@ -15,6 +18,10 @@ export class LoginComponent implements OnInit {
 
   evento(event): void {
     event.preventDefault();
-    console.log(event);
+    this.auth.login(this.username, this.password).subscribe((data) => {
+      localStorage.setItem('token', data['token']);
+    }, (error) => {
+      localStorage.clear();
+    });
   }
 }

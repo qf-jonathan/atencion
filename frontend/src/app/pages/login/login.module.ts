@@ -16,7 +16,7 @@ import {SharedModule} from "../../shared/shared.module";
         pathMatch: 'full',
         component: LoginComponent
       }
-    ])
+    ]),
   ]
 })
 export class LoginModule {
