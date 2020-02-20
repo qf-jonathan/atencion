@@ -1,3 +1,21 @@
 <div class="container">
-  <div class="login">hola mundo</div>
+  <div class="login">
+    <div class="login-logo"></div>
+    <form (submit)="evento($event)">
+      <div class="login-content">
+        <h2>Acceso</h2>
+        <app-login-input label="Usuario">
+          <input appInputRef type="text"/>
+        </app-login-input>
+        <span class="input-separator"></span>
+        <app-login-input label="Contraseña">
+          <input appInputRef type="password"/>
+        </app-login-input>
+      </div>
+      <span class="action-separator"></span>
+      <app-button>
+        Ingresar
+      </app-button>
+    </form>
+  </div>
 </div>

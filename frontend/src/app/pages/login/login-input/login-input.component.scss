@@ -1,0 +1,18 @@
+@import "src/style/colors";
+
+:host ::ng-deep {
+  input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: bold;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    color: $main-color;
+  }
+}
+
+div {
+  padding: 8px;
+}
