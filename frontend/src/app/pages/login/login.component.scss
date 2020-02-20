@@ -1,0 +1,51 @@
+@import 'src/style/colors';
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(src/assets/login-background.jpg);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login {
+  &-logo {
+    background: url("src/assets/logo.svg") center top no-repeat;
+    background-size: 160px auto;
+    height: 162px;
+  }
+
+  .login-content {
+    width: 352px;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, .5);
+
+    h2 {
+      background: $main-color;
+      margin: 0;
+      padding: 7px 0;
+      font-size: 20px;
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+  span {
+    display: block;
+    width: 100%;
+
+    &.input-separator {
+      background: $main-color;
+      height: 1px;
+    }
+
+    &.action-separator {
+      height: 24px;
+    }
+  }
+}
