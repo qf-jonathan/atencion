@@ -13,8 +13,8 @@
         </app-login-input>
       </div>
       <span class="action-separator"></span>
-      <app-button>
-        Ingresar
+      <app-button [alert]="getAlert()">
+        {{ message }}
       </app-button>
     </form>
   </div>
