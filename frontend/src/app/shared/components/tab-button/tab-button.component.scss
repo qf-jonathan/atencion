@@ -6,10 +6,11 @@ button {
   color: white;
   font-size: 20px;
   font-weight: bold;
-  padding: 11px 0;
-  width: 100%;
+  padding: 8px 14px;
   border: none;
+  margin: 2px 4px;
   @include border;
+  outline: none;
 
   &:hover {
     background: $main-color-hover;
@@ -17,13 +18,5 @@ button {
 
   &:active {
     box-shadow: none;
-  }
-
-  &.alert {
-    background: $main-alert-color;
-
-    :hover {
-      background: $main-alert-color;
-    }
   }
 }

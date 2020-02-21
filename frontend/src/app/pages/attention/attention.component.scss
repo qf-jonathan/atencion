@@ -1,0 +1,40 @@
+@import "src/style/colors";
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  height: 72px;
+  background: $main-header-color;
+  box-shadow: 0 3px 6px #00000029;
+  z-index: 1;
+  padding: 15px 12px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+
+  .logo {
+    background: red;
+    width: 60px;
+    height: 48px;
+    display: inline-block;
+    background: url("src/assets/logo.svg") center center no-repeat;
+    background-size: contain;
+    margin: -2px 12px 0 4px;
+  }
+
+  .spacer {
+    flex: 1 1;
+  }
+}
+
+.content {
+  flex: 1 1;
+  background: blue;
+  box-sizing: border-box;
+  background: $main-content-color;
+}
