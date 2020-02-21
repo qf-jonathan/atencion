@@ -17,7 +17,8 @@ export class AttentionComponent implements OnInit {
 
   closeSession() {
     this.auth.logout().subscribe(() => {
-      this.router.navigateByUrl('/login');
+      localStorage.clear();
+      this.router.navigateByUrl('/login').then();
     });
   }
 }
