@@ -20,11 +20,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  evento(event): void {
+  submit(event): void {
     event.preventDefault();
     this.auth.login(this.username, this.password).subscribe((data) => {
-      localStorage.setItem('token', data['token']);
-      this.router.navigateByUrl('/');
+      localStorage.setItem('token', data.token);
+      this.router.navigateByUrl('/').then();
     }, (error) => {
       localStorage.clear();
       this.message = 'Usuario y/o contraseña inválidos';

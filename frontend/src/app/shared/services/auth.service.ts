@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from 'src/environments/environment';
+import {Auth} from './auth';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class AuthService {
       username,
       password
     };
-    return this.http.post(`${this.apiUrl}/api/login/`, body);
+    return this.http.post<Auth>(`${this.apiUrl}/api/login/`, body);
   }
 
   logout() {
