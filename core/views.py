@@ -24,16 +24,12 @@ class Login(ObtainAuthToken):
 
 
 class Logout(APIView):
-    permission_classes = (IsAuthenticated,)
-
     def get(self, request):
         request.user.auth_token.delete()
         return Response(status=HTTP_200_OK)
 
 
 class Profile(APIView):
-    permission_classes = (IsAuthenticated,)
-
     def get(self, request):
         content = {
             'id': request.user.profile,
