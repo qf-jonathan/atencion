@@ -18,3 +18,14 @@ class Logout(APIView):
     def get(self, request):
         request.user.auth_token.delete()
         return Response(status=HTTP_200_OK)
+
+
+class Profile(APIView):
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        content = {
+            'id': request.user.profile,
+            'profile': request.user.get_profile_display()
+        }
+        return Response(content)
