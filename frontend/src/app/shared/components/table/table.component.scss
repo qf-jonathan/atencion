@@ -1,0 +1,28 @@
+@import "src/style/mixins";
+@import "src/style/colors";
+
+.container {
+  width: 224px;
+  height: 160px;
+  @include border;
+  background: white;
+  flex-direction: column;
+  margin: 8px;
+  display: inline-block;
+}
+
+.header {
+  background: $main-color;
+  height: 32px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 3px;
+  box-sizing: border-box;
+  border-radius: 8px 8px 0 0;
+}
+
+.content {
+  flex: 1 1;
+}

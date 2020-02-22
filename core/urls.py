@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from .views import Login, Logout, Profile, NavTabs
 
 urlpatterns = [
@@ -6,4 +6,5 @@ urlpatterns = [
     path('logout/', Logout.as_view(), name='api_logout'),
     path('profile/', Profile.as_view(), name='api_profile'),
     path('nav_tabs/', NavTabs.as_view(), name='api_nav_tabs'),
+    path('ambience/', include('ambience.urls')),
 ]

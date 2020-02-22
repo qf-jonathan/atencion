@@ -36,4 +36,7 @@ header {
   background: blue;
   box-sizing: border-box;
   background: $main-content-color;
+  padding: 15px;
+  overflow: auto;
+  text-align: center;
 }

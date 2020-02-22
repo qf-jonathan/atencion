@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from .models import Table
+from rest_framework import mixins, viewsets
+from .serializers import TableSerializer
 
-# Create your views here.
+
+class TableViewSet(mixins.ListModelMixin,
+                   mixins.RetrieveModelMixin,
+                   viewsets.GenericViewSet):
+    queryset = Table.objects.filter(active=True)
+    serializer_class = TableSerializer
