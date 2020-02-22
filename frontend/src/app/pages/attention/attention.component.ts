@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../shared/services/auth.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../shared/services/api.service';
+import {NavTab} from "../../shared/services/api";
 
 @Component({
   selector: 'app-attention',
@@ -9,13 +10,21 @@ import {ApiService} from '../../shared/services/api.service';
   styleUrls: ['./attention.component.scss']
 })
 export class AttentionComponent implements OnInit {
-  constructor(private auth: AuthService, private router: Router, private api: ApiService) {
-    this.api.profile().subscribe((d) => {
-      console.log(d);
-    });
+  tabs: NavTab[];
+
+  constructor(private auth: AuthService,
+              private route: ActivatedRoute,
+              private router: Router,
+              private api: ApiService) {
   }
 
   ngOnInit(): void {
+    this.api.navTabs().subscribe((navTabs) => {
+      this.tabs = navTabs;
+      if (this.tabs.length !== 0 && this.route.children.length === 0) {
+        this.loadUI(this.tabs[0]);
+      }
+    });
   }
 
   closeSession() {
@@ -23,5 +32,15 @@ export class AttentionComponent implements OnInit {
       localStorage.clear();
       this.router.navigateByUrl('/login').then();
     });
+  }
+
+  loadUI(nav: NavTab) {
+    let url = '';
+    if (nav.type === 'Mozo') {
+      url = 'ambience';
+    } else if (nav.type === 'Cocinero') {
+      url = 'preparation';
+    }
+    this.router.navigate([url, nav.id]).then();
   }
 }

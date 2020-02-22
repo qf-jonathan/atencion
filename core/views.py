@@ -1,9 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.status import HTTP_200_OK
+from ambience.models import Area, Preparation
 
 
 class Login(ObtainAuthToken):
@@ -35,4 +35,22 @@ class Profile(APIView):
             'id': request.user.profile,
             'profile': request.user.get_profile_display()
         }
+        return Response(content)
+
+
+class NavTabs(APIView):
+    def get(self, request):
+        nav_type = request.user.get_profile_display()
+        dataset = []
+        if nav_type == 'Mozo':
+            dataset = Area.objects.filter(active=True)
+        elif nav_type == 'Cocinero':
+            dataset = Preparation.objects.filter(active=True)
+        content = []
+        for row in dataset:
+            content.append({
+                'id': row.id,
+                'name': row.name,
+                'type': nav_type
+            })
         return Response(content)

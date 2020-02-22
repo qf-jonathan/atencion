@@ -11,11 +11,11 @@ const routes: Routes = [
     component: AttentionComponent,
     children: [
       {
-        path: 'ambience',
+        path: 'ambience/:id',
         component: AmbienceComponent
       },
       {
-        path: 'preparation',
+        path: 'preparation/:id',
         component: PreparationComponent
       }
     ]

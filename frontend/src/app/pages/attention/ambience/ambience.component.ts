@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-ambience',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ambience.component.scss']
 })
 export class AmbienceComponent implements OnInit {
+  areaId: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute) {
   }
 
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.areaId = params.get('id');
+    });
+  }
 }
