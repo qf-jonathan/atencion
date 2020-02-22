@@ -24,6 +24,7 @@ export class LoginComponent implements OnInit {
     event.preventDefault();
     this.auth.login(this.username, this.password).subscribe((data) => {
       localStorage.setItem('token', data.token);
+      localStorage.setItem('profile', JSON.stringify(data.profile));
       this.router.navigateByUrl('/').then();
     }, (error) => {
       localStorage.clear();

@@ -1,4 +1,9 @@
 export interface Auth {
-  token?: string;
-  non_field_errors?: string[];
+  token: string;
+  profile: Profile;
+}
+
+export interface Profile {
+  id: number;
+  profile: string;
 }
