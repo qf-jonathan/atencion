@@ -27,16 +27,19 @@ class Detail(models.Model):
     registered_at = models.DateTimeField('registrado a', auto_now_add=True)
     attended_at = models.DateTimeField('atendido a', null=True, blank=True)
     finalized_at = models.DateTimeField('finalizado a', null=True, blank=True)
+    delivered_at = models.DateTimeField('entregado a', null=True, blank=True)
 
     @property
     def state(self):
         if self.registered_at is None:
             return '-'
-        if self.attended_at is None and self.finalized_at is None:
+        if self.attended_at is None and self.finalized_at is None and self.delivered_at is None:
             return 'nuevo'
-        if self.finalized_at is None:
+        if self.finalized_at is None and self.delivered_at is None:
             return 'preparacion'
-        return 'finalizado'
+        if self.delivered_at is None:
+            return 'listo'
+        return 'entregado'
 
     def __str__(self):
         return f'{self.item.name} {self.state}'

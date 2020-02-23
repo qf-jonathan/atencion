@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Profile} from './core-api';
-import {NavTab} from "./api";
-import {Observable, of} from "rxjs";
+import {Area, NavTab} from './api';
+import {Observable, of} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,10 +20,13 @@ export class ApiService {
 
   navTabs(): Observable<NavTab[]> {
     return this.http.get<NavTab[]>(`${this.apiUrl}/api/nav_tabs/`);
-    /*return of<NavTab[]>([
-      {id: 1, name: 'Ambiente 1', type: ''},
-      {id: 2, name: 'Ambiente 2', type: ''},
-      {id: 3, name: 'Ambiente 3', type: ''}
-    ]);*/
+  }
+
+  tableList() {
+    return this.http.get(`${this.apiUrl}/api/ambience/table/`);
+  }
+
+  area(id: string): Observable<Area> {
+    return this.http.get<Area>(`${this.apiUrl}/api/ambience/area/${id}/`);
   }
 }

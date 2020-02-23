@@ -3,3 +3,13 @@ export interface NavTab {
   name: string;
   type: string;
 }
+
+export interface Area {
+  name: string;
+  table_set: Table[];
+}
+
+export interface Table {
+  url: string;
+  label: string;
+}

@@ -1,5 +1,4 @@
-import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../../services/api.service";
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-table',
@@ -7,7 +6,9 @@ import {ApiService} from "../../services/api.service";
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  constructor(private api: ApiService) {
+  @Input() label: string;
+
+  constructor() {
   }
 
   ngOnInit(): void {

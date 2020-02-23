@@ -7,4 +7,6 @@ urlpatterns = [
     path('profile/', Profile.as_view(), name='api_profile'),
     path('nav_tabs/', NavTabs.as_view(), name='api_nav_tabs'),
     path('ambience/', include('ambience.urls')),
+    path('order/', include('order.urls')),
+    path('menu/', include('menu.urls')),
 ]
