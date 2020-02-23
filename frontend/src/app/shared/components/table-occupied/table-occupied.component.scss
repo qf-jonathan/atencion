@@ -1,0 +1,25 @@
+@import "src/style/colors";
+
+.circle {
+  display: inline-block;
+  border-radius: 100%;
+  //box-shadow: 0 0 2px #000000;
+  border: 1px solid #E0E0E0;
+  box-sizing: border-box;
+}
+
+.blue {
+  background-color: $main-blue;
+}
+
+.green {
+  background-color: $main-green;
+}
+
+.yellow {
+  background-color: $main-yellow;
+}
+
+.red {
+  background-color: $main-red;
+}
