@@ -1,0 +1,65 @@
+@import "src/style/mixins";
+@import "src/style/colors";
+
+:host {
+  display: inline-block;
+}
+
+.container {
+  width: 269px;
+  height: 59px;
+  @include border;
+  background: white;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  margin: 5px 0;
+
+  .image {
+    width: 59px;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 8px 0 0 8px;
+  }
+
+  .content {
+    flex: 1 1;
+    text-align: left;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+
+    &-label {
+      color: $main-green;
+      display: block;
+    }
+
+    &-price {
+      color: $main-red;
+      font-weight: bold;
+    }
+  }
+
+  .state {
+    width: 24px;
+    border-radius: 0 8px 8px 0;
+    background-color: #F5F9F4;
+  }
+
+  .blue {
+    background-color: $main-blue;
+  }
+
+  .green {
+    background-color: $main-green;
+  }
+
+  .yellow {
+    background-color: $main-yellow;
+  }
+
+  .red {
+    background-color: $main-red;
+  }
+}

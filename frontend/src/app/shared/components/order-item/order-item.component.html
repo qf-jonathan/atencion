@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="image" [style.background-image]="'url(' + detail.item.image + ')'"></div>
+  <div class="content">
+    <div>
+      <span class="content-label">{{ detail.item.name }}</span>
+      <span class="content-price">S/ {{ detail.item.price }}</span>
+    </div>
+  </div>
+  <div class="state"
+       [class.red]="detail.state==='nuevo'"
+       [class.yellow]="detail.state==='preparacion'"
+       [class.green]="detail.state==='listo'"
+       [class.blue]="detail.state==='entregado'"></div>
+</div>

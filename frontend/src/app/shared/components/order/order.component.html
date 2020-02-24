@@ -32,8 +32,8 @@
         <div class="orders-header">Pedidos</div>
         <div class="orders-content">
           <div *ngIf="!!table.invoice_set[0]">
-            <div *ngFor="let detail of table.invoice_set[0].detail_set">
-              {{ detail | json }}
+            <div *ngFor="let detail of table.invoice_set[0].detail_set; let i = index">
+              <app-order-item [detail]="detail" (click)="removeAttempt(i)"></app-order-item>
             </div>
           </div>
         </div>

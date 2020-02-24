@@ -9,6 +9,7 @@ import {TableDirtyComponent} from './components/table-dirty/table-dirty.componen
 import {ModalComponent} from './components/modal/modal.component';
 import {OrderComponent} from './components/order/order.component';
 import { MenuItemComponent } from './components/menu-item/menu-item.component';
+import { OrderItemComponent } from './components/order-item/order-item.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MenuItemComponent } from './components/menu-item/menu-item.component';
     TableDirtyComponent,
     ModalComponent,
     OrderComponent,
-    MenuItemComponent
+    MenuItemComponent,
+    OrderItemComponent
   ],
   exports: [
     InputRefDirective,

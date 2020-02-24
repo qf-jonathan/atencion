@@ -75,12 +75,19 @@ export class OrderComponent implements OnInit {
     if (this.table.invoice_set.length === 0) return;
     if (this.table.invoice_set[0].url) {
       this.api.invoiceUpdate(this.format()).subscribe((invoice) => {
-        console.log(invoice);
+        this.modalRef.close();
       });
     } else {
       this.api.invoiceNew(this.format()).subscribe((invoice) => {
-        console.log(invoice);
+        this.modalRef.close();
       });
+    }
+  }
+
+  removeAttempt(index: number) {
+    const detail_set = this.table.invoice_set[0].detail_set;
+    if (!detail_set[index].state || detail_set[index].state === 'nuevo') {
+      detail_set.splice(index, 1);
     }
   }
 }
