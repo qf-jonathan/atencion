@@ -1,6 +1,12 @@
 <div class="container">
-  <div class="header">{{ label }}</div>
-  <div class="content">
-    <app-table-occupied></app-table-occupied>
+  <div class="header">{{ table.label }}</div>
+  <div class="content" [ngSwitch]="getState()">
+    <div *ngSwitchCase="'free'" class="free">LIBRE</div>
+    <app-table-occupied *ngSwitchCase="'occupied'"
+                        [invoice]="table.invoice_set[0]"
+                        (click)="openOrderDialog()"
+                        [style.cursor]="'pinter'">
+    </app-table-occupied>
+    <app-table-dirty *ngSwitchCase="'dirty'"></app-table-dirty>
   </div>
 </div>

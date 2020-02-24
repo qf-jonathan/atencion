@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Invoice} from '../../services/api';
 
 const SIZE_STYLES = {
   default: {
@@ -24,7 +25,7 @@ const SIZE_STYLES = {
   styleUrls: ['./table-occupied.component.scss']
 })
 export class TableOccupiedComponent implements OnInit {
-  size = 8;
+  @Input() invoice: Invoice;
 
   constructor() {
   }
@@ -33,9 +34,9 @@ export class TableOccupiedComponent implements OnInit {
   }
 
   getStyle() {
-    if (this.size <= 8) {
+    if (this.invoice.detail_set.length <= 8) {
       return SIZE_STYLES.default;
-    } else if (this.size <= 15) {
+    } else if (this.invoice.detail_set.length <= 15) {
       return SIZE_STYLES.medium;
     }
     return SIZE_STYLES.small;

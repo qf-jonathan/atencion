@@ -6,7 +6,6 @@
   height: 160px;
   @include border;
   background: white;
-  flex-direction: column;
   margin: 8px;
   display: inline-block;
 }
@@ -28,4 +27,14 @@
   border-radius: 0 0 8px 8px;
   overflow: auto;
   line-height: 0;
+}
+
+.free {
+  @include clickable_fill;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 60px 0 0 0;
+  font-size: 33px;
+  font-weight: bold;
+  color: $main-color;
 }

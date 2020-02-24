@@ -1,8 +1,10 @@
-<div class="circle yellow" [style]="getStyle()"></div>
-<div class="circle green" [style]="getStyle()"></div>
-<div class="circle blue" [style]="getStyle()"></div>
-<div class="circle red" [style]="getStyle()"></div>
-<div class="circle green" [style]="getStyle()"></div>
-<div class="circle yellow" [style]="getStyle()"></div>
-<div class="circle green" [style]="getStyle()"></div>
-<div class="circle blue" [style]="getStyle()"></div>
+<div class="container">
+  <div *ngFor="let detail of invoice.detail_set"
+       class="circle"
+       [class.red]="detail.state==='nuevo'"
+       [class.yellow]="detail.state==='preparacion'"
+       [class.green]="detail.state==='listo'"
+       [class.blue]="detail.state==='entregado'"
+       [style]="getStyle()">
+  </div>
+</div>
