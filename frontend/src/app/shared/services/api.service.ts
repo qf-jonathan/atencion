@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Profile} from './core-api';
-import {Area, Category, NavTab} from './api';
+import {Area, Category, Invoice, NavTab} from './api';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -32,5 +32,13 @@ export class ApiService {
 
   menu(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.apiUrl}/api/menu/category/`);
+  }
+
+  invoiceNew(invoice: any) {
+    return this.http.post(`${this.apiUrl}/api/order/invoice_save/`, invoice);
+  }
+
+  invoiceUpdate(invoice: any) {
+    return this.http.patch(invoice.url, invoice);
   }
 }

@@ -24,8 +24,4 @@ export class TableComponent implements OnInit {
     }
     return 'free';
   }
-
-  openOrderDialog() {
-    alert('hola');
-  }
 }

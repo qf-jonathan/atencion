@@ -5,6 +5,7 @@ from . import views
 router = routers.DefaultRouter()
 router.register(r'invoice', views.InvoiceViewSet)
 router.register(r'detail', views.DetailViewSet)
+router.register(r'invoice_save', views.InvoiceSaveViewSet, basename='invoice-save')
 
 urlpatterns = [
     path('', include(router.urls)),

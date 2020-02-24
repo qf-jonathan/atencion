@@ -16,17 +16,22 @@ export interface Table {
 }
 
 export interface Invoice {
-  url: string;
+  url?: string;
+  table: string;
   detail_set: Detail[];
+  state: number;
 }
 
 export interface Detail {
-  url: string;
+  url?: string;
+  id?: number;
   item: Item;
-  state: string;
+  state?: string;
 }
 
 export interface Item {
+  url: string;
+  id: number;
   name: string;
   image: string;
   price: string;

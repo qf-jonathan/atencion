@@ -99,6 +99,7 @@
       @include rounded_container;
       display: flex;
       flex-direction: column;
+      overflow: auto;
 
       &-header {
         font-size: 20px;
@@ -136,6 +137,12 @@
       height: 62px;
       margin-top: 20px;
       @include rounded_container;
+      padding: 8px 0;
+      box-sizing: border-box;
+
+      app-button {
+        margin: 5px;
+      }
     }
   }
 }

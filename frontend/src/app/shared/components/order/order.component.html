@@ -1,6 +1,6 @@
 <div class="container">
   <div class="header">
-    <span>Mesa 1</span>
+    <span>{{ table.label }}</span>
     <span class="spacer"></span>
     <span class="icon"></span>
   </div>
@@ -19,7 +19,9 @@
       <div class="items">
         <div *ngFor="let category of categories">
           <div *ngIf="currentTab===category.name">
-            <app-menu-item *ngFor="let item of category.item_set" [item]="item">
+            <app-menu-item *ngFor="let item of category.item_set"
+                           [item]="item"
+                           (click)="addItem(item)">
             </app-menu-item>
           </div>
         </div>
@@ -28,13 +30,22 @@
     <div class="list">
       <div class="orders">
         <div class="orders-header">Pedidos</div>
-        <div class="orders-content"></div>
+        <div class="orders-content">
+          <div *ngIf="!!table.invoice_set[0]">
+            <div *ngFor="let detail of table.invoice_set[0].detail_set">
+              {{ detail | json }}
+            </div>
+          </div>
+        </div>
         <div class="orders-total">
           <span class="orders-total-label">Total</span>
-          <span class="orders-total-content">S/ 60.00</span>
+          <span class="orders-total-content">S/ {{ getTotal() | number: '.2' }}</span>
         </div>
       </div>
-      <div class="actions"></div>
+      <div class="actions">
+        <app-button width="181px" (click)="save()">Guardar</app-button>
+        <app-button alert="true" width="80px" (click)="closeModal()">Cerrar</app-button>
+      </div>
     </div>
   </div>
 </div>
