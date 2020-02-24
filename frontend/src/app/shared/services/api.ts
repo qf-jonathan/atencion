@@ -27,7 +27,12 @@ export interface Detail {
 }
 
 export interface Item {
-  url: string;
   name: string;
+  image: string;
   price: string;
+}
+
+export interface Category {
+  name: string;
+  item_set: Item[];
 }

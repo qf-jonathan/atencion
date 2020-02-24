@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="header">
+    <span>Mesa 1</span>
+    <span class="spacer"></span>
+    <span class="icon"></span>
+  </div>
+  <div class="content">
+    <div class="menu">
+      <div class="tabs">
+        <div *ngFor="let category of categories"
+             class="tab"
+             [class.active]="currentTab===category.name"
+             (click)="currentTab=category.name">
+          {{ category.name }}
+        </div>
+      </div>
+      <div class="items">
+        <div *ngFor="let category of categories">
+          <div *ngIf="currentTab===category.name">
+            <div *ngFor="let item of category.item_set">
+              {{ item | json }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="list">
+      <div class="orders">
+        <div class="orders-header">Pedidos</div>
+        <div class="orders-content"></div>
+        <div class="orders-total">
+          <span class="orders-total-label">Total</span>
+          <span class="orders-total-content">S/ 60.00</span>
+        </div>
+      </div>
+      <div class="actions"></div>
+    </div>
+  </div>
+</div>

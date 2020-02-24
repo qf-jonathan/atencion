@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Profile} from './core-api';
-import {Area, NavTab} from './api';
+import {Area, Category, NavTab} from './api';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -28,5 +28,9 @@ export class ApiService {
 
   area(id: string): Observable<Area> {
     return this.http.get<Area>(`${this.apiUrl}/api/ambience/area/${id}/`);
+  }
+
+  menu(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.apiUrl}/api/menu/category/`);
   }
 }

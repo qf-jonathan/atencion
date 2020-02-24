@@ -1,8 +1,16 @@
 from rest_framework import serializers
-from .models import Item
+from .models import Item, Category
 
 
-class ItemSerializer(serializers.HyperlinkedModelSerializer):
+class ItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = Item
-        fields = ['url', 'name', 'price']
+        fields = ['name', 'image', 'price']
+
+
+class CategorySerializer(serializers.ModelSerializer):
+    item_set = ItemSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Category
+        fields = ['name', 'item_set']

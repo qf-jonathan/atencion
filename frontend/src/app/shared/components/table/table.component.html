@@ -1,12 +1,19 @@
 <div class="container">
   <div class="header">{{ table.label }}</div>
   <div class="content" [ngSwitch]="getState()">
-    <div *ngSwitchCase="'free'" class="free">LIBRE</div>
+    <div *ngSwitchCase="'free'" class="free" (click)="orderEmpty.open()">LIBRE</div>
     <app-table-occupied *ngSwitchCase="'occupied'"
                         [invoice]="table.invoice_set[0]"
-                        (click)="openOrderDialog()"
-                        [style.cursor]="'pinter'">
+                        (click)="order.open()">
     </app-table-occupied>
     <app-table-dirty *ngSwitchCase="'dirty'"></app-table-dirty>
   </div>
 </div>
+<app-modal #orderEmpty>
+  <app-order *ngIf="orderEmpty.isVisible">
+  </app-order>
+</app-modal>
+<app-modal #order>
+  <app-order *ngIf="order.isVisible">
+  </app-order>
+</app-modal>

@@ -6,6 +6,8 @@ import {TabButtonComponent} from './components/tab-button/tab-button.component';
 import {TableComponent} from './components/table/table.component';
 import {TableOccupiedComponent} from './components/table-occupied/table-occupied.component';
 import {TableDirtyComponent} from './components/table-dirty/table-dirty.component';
+import {ModalComponent} from './components/modal/modal.component';
+import {OrderComponent} from './components/order/order.component';
 
 
 @NgModule({
@@ -15,9 +17,18 @@ import {TableDirtyComponent} from './components/table-dirty/table-dirty.componen
     TabButtonComponent,
     TableComponent,
     TableOccupiedComponent,
-    TableDirtyComponent
+    TableDirtyComponent,
+    ModalComponent,
+    OrderComponent
   ],
-  exports: [InputRefDirective, ButtonComponent, TabButtonComponent, TableComponent],
+  exports: [
+    InputRefDirective,
+    ButtonComponent,
+    TabButtonComponent,
+    TableComponent,
+    ModalComponent,
+    OrderComponent
+  ],
   imports: [CommonModule]
 })
 export class SharedModule {

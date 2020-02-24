@@ -1,0 +1,12 @@
+.container {
+  position: absolute;
+  z-index: 1;
+  background: #00000080;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

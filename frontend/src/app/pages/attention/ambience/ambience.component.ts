@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../shared/services/api.service';
 import {Table} from '../../../shared/services/api';
+import {ModalComponent} from '../../../shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-ambience',
