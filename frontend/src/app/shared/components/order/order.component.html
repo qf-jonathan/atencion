@@ -7,19 +7,20 @@
   <div class="content">
     <div class="menu">
       <div class="tabs">
-        <div *ngFor="let category of categories"
-             class="tab"
-             [class.active]="currentTab===category.name"
-             (click)="currentTab=category.name">
-          {{ category.name }}
+        <div class="tabs-scroller">
+          <div *ngFor="let category of categories"
+               class="tab"
+               [class.active]="currentTab===category.name"
+               (click)="currentTab=category.name">
+            {{ category.name }}
+          </div>
         </div>
       </div>
       <div class="items">
         <div *ngFor="let category of categories">
           <div *ngIf="currentTab===category.name">
-            <div *ngFor="let item of category.item_set">
-              {{ item | json }}
-            </div>
+            <app-menu-item *ngFor="let item of category.item_set" [item]="item">
+            </app-menu-item>
           </div>
         </div>
       </div>

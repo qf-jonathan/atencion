@@ -8,6 +8,7 @@ import {TableOccupiedComponent} from './components/table-occupied/table-occupied
 import {TableDirtyComponent} from './components/table-dirty/table-dirty.component';
 import {ModalComponent} from './components/modal/modal.component';
 import {OrderComponent} from './components/order/order.component';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {OrderComponent} from './components/order/order.component';
     TableOccupiedComponent,
     TableDirtyComponent,
     ModalComponent,
-    OrderComponent
+    OrderComponent,
+    MenuItemComponent
   ],
   exports: [
     InputRefDirective,

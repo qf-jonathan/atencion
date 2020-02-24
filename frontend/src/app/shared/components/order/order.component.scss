@@ -43,33 +43,41 @@
   flex: 1 1;
   display: flex;
   flex-direction: row;
+  overflow: auto;
 
   .menu {
     flex: 1 1;
     display: flex;
     flex-direction: column;
     margin-right: 20px;
+    overflow: auto;
 
     .tabs {
       height: 45px;
       text-align: left;
-    }
+      overflow-y: hidden;
+      overflow-x: auto;
 
-    .tab {
-      display: inline-block;
-      height: 45px;
-      background: $main-total-background;
-      font-size: 28px;
-      color: $main-color;
-      padding: 6px 17px 0 17px;
-      box-sizing: border-box;
-      border-radius: 8px 8px 0 0;
-      cursor: pointer;
-    }
+      &-scroller {
+        display: table;
 
-    .active {
-      background: $main-container;
-      color: $main-color;
+        .tab {
+          display: table-cell;
+          height: 45px;
+          background: $main-total-background;
+          font-size: 28px;
+          color: $main-color;
+          padding: 6px 17px 0 17px;
+          box-sizing: border-box;
+          border-radius: 8px 8px 0 0;
+          cursor: pointer;
+        }
+
+        .active {
+          background: $main-container;
+          color: $main-color;
+        }
+      }
     }
 
     .items {
@@ -77,6 +85,7 @@
       border-radius: 0 0 8px 8px;
       background: $main-container;
       overflow: auto;
+      padding: 8px;
     }
   }
 

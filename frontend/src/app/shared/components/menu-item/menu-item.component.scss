@@ -1,0 +1,49 @@
+@import "src/style/mixins";
+@import "src/style/colors";
+
+.container {
+  display: inline-block;
+  width: 251px;
+  height: 231px;
+  @include border;
+  background: white;
+  margin: 8px;
+  cursor: pointer;
+}
+
+
+.image {
+  height: 177px;
+  display: block;
+  background-size: cover;
+  background-position: center center;
+  border-radius: 8px 8px 0 0;
+}
+
+.content {
+  height: 54px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 10px;
+  box-sizing: border-box;
+
+  .label {
+    color: $main-green;
+    flex: 1 1;
+    text-align: left;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    max-height: 54px;
+  }
+
+  .price {
+    display: block;
+    color: $main-red;
+    margin-left: 8px;
+  }
+}
