@@ -18,7 +18,7 @@ class InvoiceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Invoice
-        fields = ['url', 'table', 'detail_set', 'state']
+        fields = ['url', 'id', 'table', 'detail_set', 'state']
 
 
 class DetailSaveSerializer(serializers.ModelSerializer):

@@ -29,12 +29,19 @@
   line-height: 0;
 }
 
-.free {
+.action {
   @include clickable_fill;
   text-align: center;
   box-sizing: border-box;
   padding: 60px 0 0 0;
   font-size: 33px;
   font-weight: bold;
-  color: $main-color;
+}
+
+.free {
+  color: $main-green;
+}
+
+.dirty {
+  color: $main-red;
 }

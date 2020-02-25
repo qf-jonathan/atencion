@@ -1,12 +1,12 @@
 <div class="container">
   <div class="header">{{ table.label }}</div>
   <div class="content" [ngSwitch]="getState()">
-    <div *ngSwitchCase="'free'" class="free" (click)="order.open()">LIBRE</div>
+    <div *ngSwitchCase="'free'" class="action free" (click)="order.open()">LIBRE</div>
     <app-table-occupied *ngSwitchCase="'occupied'"
                         [invoice]="table.invoice_set[0]"
                         (click)="order.open()">
     </app-table-occupied>
-    <app-table-dirty *ngSwitchCase="'dirty'"></app-table-dirty>
+    <div *ngSwitchCase="'dirty'" class="action dirty" (click)="clearDirty()">LIMPIAR</div>
   </div>
 </div>
 <app-modal #order>

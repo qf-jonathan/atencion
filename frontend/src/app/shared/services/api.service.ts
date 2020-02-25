@@ -34,11 +34,15 @@ export class ApiService {
     return this.http.get<Category[]>(`${this.apiUrl}/api/menu/category/`);
   }
 
-  invoiceNew(invoice: any) {
+  invoiceNew(invoice: Invoice) {
     return this.http.post(`${this.apiUrl}/api/order/invoice_save/`, invoice);
   }
 
-  invoiceUpdate(invoice: any) {
+  invoiceUpdate(invoice: Invoice) {
     return this.http.patch(invoice.url, invoice);
+  }
+
+  invoiceRemove(invoice: Invoice) {
+    return this.http.delete(`${this.apiUrl}/api/order/invoice_delete/${invoice.id}/`);
   }
 }

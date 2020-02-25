@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Table} from '../../services/api';
+import {ApiService} from '../../services/api.service';
+import {ScheduleService} from '../../services/schedule.service';
 
 @Component({
   selector: 'app-table',
@@ -9,7 +11,7 @@ import {Table} from '../../services/api';
 export class TableComponent implements OnInit {
   @Input() table: Table;
 
-  constructor() {
+  constructor(private api: ApiService, private scheduler: ScheduleService) {
   }
 
   ngOnInit(): void {
@@ -23,5 +25,14 @@ export class TableComponent implements OnInit {
       return notDelivered ? 'occupied' : 'dirty';
     }
     return 'free';
+  }
+
+  clearDirty() {
+    if (this.table.invoice_set.length !== 0) {
+      this.scheduler.stop();
+      this.api.invoiceRemove(this.table.invoice_set[0]).subscribe(() => {
+        this.scheduler.restart();
+      });
+    }
   }
 }

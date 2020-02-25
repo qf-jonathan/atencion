@@ -5,11 +5,10 @@ import {ButtonComponent} from './components/button/button.component';
 import {TabButtonComponent} from './components/tab-button/tab-button.component';
 import {TableComponent} from './components/table/table.component';
 import {TableOccupiedComponent} from './components/table-occupied/table-occupied.component';
-import {TableDirtyComponent} from './components/table-dirty/table-dirty.component';
 import {ModalComponent} from './components/modal/modal.component';
 import {OrderComponent} from './components/order/order.component';
-import { MenuItemComponent } from './components/menu-item/menu-item.component';
-import { OrderItemComponent } from './components/order-item/order-item.component';
+import {MenuItemComponent} from './components/menu-item/menu-item.component';
+import {OrderItemComponent} from './components/order-item/order-item.component';
 
 
 @NgModule({
@@ -19,7 +18,6 @@ import { OrderItemComponent } from './components/order-item/order-item.component
     TabButtonComponent,
     TableComponent,
     TableOccupiedComponent,
-    TableDirtyComponent,
     ModalComponent,
     OrderComponent,
     MenuItemComponent,

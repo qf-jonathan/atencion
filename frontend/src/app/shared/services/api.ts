@@ -17,6 +17,7 @@ export interface Table {
 
 export interface Invoice {
   url?: string;
+  id?: number;
   table: string;
   detail_set: Detail[];
   state: number;

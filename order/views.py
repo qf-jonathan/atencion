@@ -1,6 +1,8 @@
 from .models import Invoice, Detail
-from rest_framework import mixins, viewsets
+from rest_framework import mixins, viewsets, status
+from rest_framework.views import APIView, Response
 from .serializers import InvoiceSerializer, InvoiceSaveSerializer
+from django.shortcuts import get_object_or_404
 
 
 class InvoiceViewSet(mixins.ListModelMixin,
@@ -21,3 +23,11 @@ class InvoiceSaveViewSet(mixins.CreateModelMixin,
                          viewsets.GenericViewSet):
     queryset = Invoice.objects.filter(state=Invoice.NEW)
     serializer_class = InvoiceSaveSerializer
+
+
+class InvoiceStateUpdateView(APIView):
+    def delete(self, request, invoice_id):
+        invoice = get_object_or_404(Invoice, pk=invoice_id)
+        invoice.state = Invoice.PAID
+        invoice.save()
+        return Response(status=status.HTTP_204_NO_CONTENT)
