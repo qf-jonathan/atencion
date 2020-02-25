@@ -1,20 +1,22 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ApiService} from '../../services/api.service';
 import {Category, Item, Table} from '../../services/api';
 import {ModalComponent} from '../modal/modal.component';
+import {ScheduleService} from '../../services/schedule.service';
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss']
 })
-export class OrderComponent implements OnInit {
+export class OrderComponent implements OnInit, OnDestroy {
   @Input() table: Table;
   categories: Category[];
   currentTab: string;
   @Input() modalRef: ModalComponent;
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private scheduler: ScheduleService) {
+    this.scheduler.stop();
   }
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class OrderComponent implements OnInit {
       });
     }
     this.table.invoice_set[0].detail_set.push({
-      item: item
+      item
     });
   }
 
@@ -89,5 +91,9 @@ export class OrderComponent implements OnInit {
     if (!detail_set[index].state || detail_set[index].state === 'nuevo') {
       detail_set.splice(index, 1);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.scheduler.restart();
   }
 }
