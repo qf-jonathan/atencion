@@ -8,4 +8,5 @@ router.register(r'area', views.AreaViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('preparation/<int:preparation_id>/', views.PreparationView.as_view(), name='preparation-detail'),
 ]

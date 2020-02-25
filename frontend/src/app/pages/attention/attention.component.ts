@@ -3,6 +3,7 @@ import {AuthService} from '../../shared/services/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ApiService} from '../../shared/services/api.service';
 import {NavTab} from "../../shared/services/api";
+import {ScheduleService} from '../../shared/services/schedule.service';
 
 @Component({
   selector: 'app-attention',
@@ -14,6 +15,7 @@ export class AttentionComponent implements OnInit {
 
   constructor(private auth: AuthService,
               private route: ActivatedRoute,
+              private scheduler: ScheduleService,
               private router: Router,
               private api: ApiService) {
   }
@@ -28,6 +30,7 @@ export class AttentionComponent implements OnInit {
   }
 
   closeSession() {
+    this.scheduler.stop();
     this.auth.logout().subscribe(() => {
       localStorage.clear();
       this.router.navigateByUrl('/login').then();
