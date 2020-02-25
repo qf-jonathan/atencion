@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {ApiService} from '../../../shared/services/api.service';
+import {Detail} from '../../../shared/services/api';
 
 @Component({
   selector: 'app-preparation',
@@ -9,6 +10,7 @@ import {ApiService} from '../../../shared/services/api.service';
 })
 export class PreparationComponent implements OnInit {
   preparationId: string;
+  details: Detail[];
 
   constructor(private route: ActivatedRoute, private api: ApiService) {
   }
@@ -17,7 +19,7 @@ export class PreparationComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       this.preparationId = params.get('id');
       this.api.preparation(this.preparationId).subscribe((data) => {
-        console.log(data)
+        this.details = data;
       });
     });
   }

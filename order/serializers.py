@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Detail, Invoice
-from menu.serializers import ItemSerializer
+from menu.serializers import ItemSerializer, ItemPreparationSerializer
 from django.db import transaction
 
 
@@ -54,3 +54,20 @@ class InvoiceSaveSerializer(serializers.HyperlinkedModelSerializer):
             for _, detail in detail_list_prev.items():
                 detail.delete()
         return instance
+
+
+class InvoicePreparationSerializer(serializers.ModelSerializer):
+    table = serializers.SlugRelatedField(slug_field='label', read_only=True)
+
+    class Meta:
+        model = Invoice
+        fields = ['table']
+
+
+class DetailPreparationSerializer(serializers.HyperlinkedModelSerializer):
+    item = ItemPreparationSerializer(read_only=True)
+    invoice = InvoicePreparationSerializer(read_only=True)
+
+    class Meta:
+        model = Detail
+        fields = ['url', 'item', 'invoice', 'state']

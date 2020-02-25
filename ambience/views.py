@@ -1,6 +1,6 @@
 from .models import Table, Area
 from order.models import Invoice, Detail
-from order.serializers import DetailSerializer
+from order.serializers import DetailPreparationSerializer
 from rest_framework import mixins, viewsets
 from rest_framework.views import APIView, Response
 from rest_framework.status import HTTP_404_NOT_FOUND
@@ -30,12 +30,14 @@ class AreaViewSet(mixins.RetrieveModelMixin,
 class PreparationView(APIView):
     def get(self, request, preparation_id):
         try:
-            detail = Detail.objects.prefetch_related('item').order_by('-registered_at').filter(
+            detail = Detail.objects.prefetch_related('item').prefetch_related(
+                Prefetch('invoice', queryset=Invoice.objects.prefetch_related('table'))
+            ).order_by('-registered_at').filter(
                 item__destiny_id=preparation_id,
                 invoice__state=Invoice.NEW,
                 delivered_at__isnull=True,
             )
         except Detail.DoesNotExist:
             return Response(status=HTTP_404_NOT_FOUND)
-        serialized = DetailSerializer(detail, many=True, context={'request': request})
+        serialized = DetailPreparationSerializer(detail, many=True, context={'request': request})
         return Response(serialized.data)

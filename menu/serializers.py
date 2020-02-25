@@ -14,3 +14,9 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['name', 'item_set']
+
+
+class ItemPreparationSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Item
+        fields = ['name', 'image', 'price']
