@@ -1,8 +1,9 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, NavigationStart, Router} from '@angular/router';
 import {ApiService} from '../../../shared/services/api.service';
 import {Table} from '../../../shared/services/api';
-import {ModalComponent} from '../../../shared/components/modal/modal.component';
+import {ScheduleService} from "../../../shared/services/schedule.service";
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-ambience',
@@ -12,8 +13,12 @@ import {ModalComponent} from '../../../shared/components/modal/modal.component';
 export class AmbienceComponent implements OnInit {
   areaId: string;
   tableList: Table[];
+  scheduleSubscribed: any;
 
-  constructor(private route: ActivatedRoute, private api: ApiService) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private api: ApiService,
+              private schedule: ScheduleService) {
   }
 
   ngOnInit(): void {
@@ -21,7 +26,21 @@ export class AmbienceComponent implements OnInit {
       this.areaId = params.get('id');
       this.api.area(this.areaId).subscribe((data) => {
         this.tableList = data.table_set;
+        this.schedule.initScheduler();
       });
     });
+    this.scheduleSubscribed = this.schedule.getSubscriber().subscribe(() => {
+      this.api.area(this.areaId).subscribe((data) => {
+        this.tableList = data.table_set;
+      });
+    });
+    /*this.router.events.subscribe(() => {
+
+    });*/
+    /*this.router.events.pipe(
+      filter(event => event instanceof NavigationStart)
+    ).subscribe((event: NavigationStart) => {
+      this.scheduleSubscribed.unsubscribe();
+    });*/
   }
 }
