@@ -49,4 +49,8 @@ export class ApiService {
   preparation(preparationId: string): Observable<DetailPreparation[]> {
     return this.http.get<DetailPreparation[]>(`${this.apiUrl}/api/ambience/preparation/${preparationId}/`);
   }
+
+  detailUpdate(detail: DetailPreparation | Detail): Observable<DetailPreparation> {
+    return this.http.patch<DetailPreparation>(detail.url, {'state': 'auto'});
+  }
 }

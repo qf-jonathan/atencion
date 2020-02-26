@@ -86,10 +86,16 @@ export class OrderComponent implements OnInit, OnDestroy {
     }
   }
 
-  removeAttempt(index: number) {
+  itemAction(index: number) {
     const detail_set = this.table.invoice_set[0].detail_set;
     if (!detail_set[index].state || detail_set[index].state === 'nuevo') {
       detail_set.splice(index, 1);
+    }
+    if (!detail_set[index].state || detail_set[index].state === 'listo') {
+      console.log(detail_set[index]);
+      this.api.detailUpdate(detail_set[index]).subscribe((detail) => {
+        detail_set[index].state = detail.state;
+      });
     }
   }
 

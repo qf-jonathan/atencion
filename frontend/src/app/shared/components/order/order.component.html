@@ -33,7 +33,7 @@
         <div class="orders-content">
           <div *ngIf="!!table.invoice_set[0]">
             <div *ngFor="let detail of table.invoice_set[0].detail_set; let i = index">
-              <app-order-item [detail]="detail" (click)="removeAttempt(i)"></app-order-item>
+              <app-order-item [detail]="detail" (click)="itemAction(i)"></app-order-item>
             </div>
           </div>
         </div>
