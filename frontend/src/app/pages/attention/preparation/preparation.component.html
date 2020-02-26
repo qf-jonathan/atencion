@@ -1,4 +1,31 @@
-<div *ngFor="let detail of details">
-  <app-preparation-item [detail]="detail" (click)="changeState(detail)">
-  </app-preparation-item>
+<div class="container">
+  <div class="column">
+    <span class="label">Pedidos</span>
+    <div class="content">
+      <app-preparation-item *ngFor="let detail of details | filterDetail: {state: 'nuevo'}"
+                            [detail]="detail"
+                            (click)="changeState(detail)">
+      </app-preparation-item>
+    </div>
+  </div>
+  <span class="separator"></span>
+  <div class="column">
+    <span class="label">Preparación</span>
+    <div class="content">
+      <app-preparation-item *ngFor="let detail of details | filterDetail: {state: 'preparacion'}"
+                            [detail]="detail"
+                            (click)="changeState(detail)">
+      </app-preparation-item>
+    </div>
+  </div>
+  <span class="separator"></span>
+  <div class="column">
+    <span class="label">Listos</span>
+    <div class="content">
+      <app-preparation-item *ngFor="let detail of details | filterDetail: {state: 'listo'}"
+                            [detail]="detail"
+                            (click)="changeState(detail)">
+      </app-preparation-item>
+    </div>
+  </div>
 </div>

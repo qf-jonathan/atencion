@@ -10,6 +10,7 @@ import {OrderComponent} from './components/order/order.component';
 import {MenuItemComponent} from './components/menu-item/menu-item.component';
 import {OrderItemComponent} from './components/order-item/order-item.component';
 import { PreparationItemComponent } from './components/preparation-item/preparation-item.component';
+import { FilterDetailPipe } from './pipes/filter-detail.pipe';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PreparationItemComponent } from './components/preparation-item/preparat
     OrderComponent,
     MenuItemComponent,
     OrderItemComponent,
-    PreparationItemComponent
+    PreparationItemComponent,
+    FilterDetailPipe
   ],
   exports: [
     InputRefDirective,
@@ -32,7 +34,8 @@ import { PreparationItemComponent } from './components/preparation-item/preparat
     TableComponent,
     ModalComponent,
     OrderComponent,
-    PreparationItemComponent
+    PreparationItemComponent,
+    FilterDetailPipe
   ],
   imports: [CommonModule]
 })

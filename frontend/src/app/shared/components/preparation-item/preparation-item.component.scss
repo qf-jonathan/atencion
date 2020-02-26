@@ -2,7 +2,7 @@
 @import "src/style/mixins";
 
 :host {
-  display: inline-block;
+  display: flex;
 }
 
 .container {
