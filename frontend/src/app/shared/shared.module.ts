@@ -9,6 +9,7 @@ import {ModalComponent} from './components/modal/modal.component';
 import {OrderComponent} from './components/order/order.component';
 import {MenuItemComponent} from './components/menu-item/menu-item.component';
 import {OrderItemComponent} from './components/order-item/order-item.component';
+import { PreparationItemComponent } from './components/preparation-item/preparation-item.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import {OrderItemComponent} from './components/order-item/order-item.component';
     ModalComponent,
     OrderComponent,
     MenuItemComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    PreparationItemComponent
   ],
   exports: [
     InputRefDirective,
@@ -29,7 +31,8 @@ import {OrderItemComponent} from './components/order-item/order-item.component';
     TabButtonComponent,
     TableComponent,
     ModalComponent,
-    OrderComponent
+    OrderComponent,
+    PreparationItemComponent
   ],
   imports: [CommonModule]
 })

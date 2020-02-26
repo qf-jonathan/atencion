@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Profile} from './core-api';
-import {Area, Category, Detail, Invoice, NavTab} from './api';
+import {Area, Category, Detail, DetailPreparation, Invoice, NavTab} from './api';
 import {Observable, of} from 'rxjs';
 
 @Injectable({
@@ -46,7 +46,7 @@ export class ApiService {
     return this.http.delete(`${this.apiUrl}/api/order/invoice_delete/${invoice.id}/`);
   }
 
-  preparation(preparationId: string): Observable<Detail[]> {
-    return this.http.get<Detail[]>(`${this.apiUrl}/api/ambience/preparation/${preparationId}/`);
+  preparation(preparationId: string): Observable<DetailPreparation[]> {
+    return this.http.get<DetailPreparation[]>(`${this.apiUrl}/api/ambience/preparation/${preparationId}/`);
   }
 }

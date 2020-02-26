@@ -42,3 +42,20 @@ export interface Category {
   name: string;
   item_set: Item[];
 }
+
+export interface DetailPreparation {
+  url: string;
+  item: ItemPreparation;
+  invoice: InvoicePreparation;
+  state: string;
+}
+
+export interface ItemPreparation {
+  name: string;
+  image: string;
+  price: string;
+}
+
+export interface InvoicePreparation {
+  table: string;
+}

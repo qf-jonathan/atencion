@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute} from '@angular/router';
 import {ApiService} from '../../../shared/services/api.service';
-import {Detail} from '../../../shared/services/api';
+import {DetailPreparation} from '../../../shared/services/api';
 
 @Component({
   selector: 'app-preparation',
@@ -10,7 +10,7 @@ import {Detail} from '../../../shared/services/api';
 })
 export class PreparationComponent implements OnInit {
   preparationId: string;
-  details: Detail[];
+  details: DetailPreparation[];
 
   constructor(private route: ActivatedRoute, private api: ApiService) {
   }

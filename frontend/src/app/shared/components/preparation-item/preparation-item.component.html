@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="image"
+       [style.background-image]="'url(' + detail.item.image + ')'"></div>
+  <div class="content">
+    <div class="table">{{ detail.invoice.table }}</div>
+    <div class="item">{{ detail.item.name }}</div>
+  </div>
+  <div class="state"
+       [class.red]="detail.state==='nuevo'"
+       [class.yellow]="detail.state==='preparacion'"
+       [class.green]="detail.state==='listo'"></div>
+</div>
